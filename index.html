@@ -455,7 +455,10 @@ async function loadGitHubProjects() {
 
             const link = document.createElement("a");
             link.href = repo.html_url;
-            link.textContent = "View Investigation →";
+            link.textContent =
+    repo.name === "Wazuh-failed-login-investigation"
+        ? "View Investigation →"
+        : "View Project →";
             link.target = "_blank";
             link.rel = "noopener noreferrer";
 
