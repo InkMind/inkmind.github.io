@@ -233,6 +233,7 @@
     </footer>
 
     
+
 <script>
 async function loadGitHubProjects() {
     const projectList = document.getElementById("project-list");
@@ -257,7 +258,7 @@ async function loadGitHubProjects() {
 
         if (projects.length === 0) {
             projectList.textContent =
-                "No portfolio projects found yet. Add the inkmind-portfolio topic to a public repository.";
+                "No portfolio projects found yet.";
             return;
         }
 
@@ -269,19 +270,47 @@ async function loadGitHubProjects() {
             card.className = "project";
 
             const title = document.createElement("h3");
-            title.textContent = repo.name;
+            title.textContent = repo.name.replaceAll("-", " ");
 
             const description = document.createElement("p");
             description.textContent =
-                repo.description || "Cybersecurity hands-on project.";
+                repo.description ||
+                "A practical cybersecurity project demonstrating technical skills.";
+
+            const details = document.createElement("div");
+            details.className = "project-details";
+
+            // Special details for the first SOC investigation
+            if (repo.name === "Wazuh-failed-login-investigation") {
+
+                const objective = document.createElement("p");
+                objective.innerHTML = "<strong>Objective:</strong> Investigate Windows failed login events and examine authentication alerts using Wazuh.";
+
+                const tools = document.createElement("p");
+                tools.innerHTML = "<strong>Tools:</strong> Wazuh SIEM, Windows Event Logs and PowerShell.";
+
+                const activities = document.createElement("p");
+                activities.innerHTML = "<strong>Activities:</strong> Generate failed login events, examine Event ID 4625, investigate Wazuh alerts and document findings.";
+
+                details.append(objective, tools, activities);
+
+            } else {
+
+                const language = document.createElement("p");
+                language.textContent = repo.language
+                    ? "Primary language: " + repo.language
+                    : "Practical cybersecurity hands-on project.";
+
+                details.appendChild(language);
+            }
 
             const link = document.createElement("a");
             link.href = repo.html_url;
-            link.textContent = "View Project on GitHub";
+            link.textContent = "View Investigation →";
             link.target = "_blank";
             link.rel = "noopener noreferrer";
 
-            card.append(title, description, link);
+            card.append(title, description, details, link);
             grid.appendChild(card);
         });
 
@@ -296,6 +325,7 @@ async function loadGitHubProjects() {
 
 loadGitHubProjects();
 </script>
+
 </body>
 
     
