@@ -89,6 +89,32 @@
             max-width: 650px;
         }
 
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(250px, 1fr)
+    );
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.project {
+    width: 100%;
+    max-width: none;
+    border: 1px solid #334155;
+}
+
+.project h3 {
+    color: #38bdf8;
+    margin-bottom: 10px;
+}
+
+.project a {
+    display: inline-block;
+    margin-top: 12px;
+}
+
         .project a {
             color: #38bdf8;
         }
@@ -175,23 +201,20 @@
             </p>
         </section>
 
-        <section id="projects">
-            <h2>Practical SOC Projects</h2>
+       
+<section id="projects">
+    <h2>Practical SOC Projects</h2>
 
-            <div class="project">
-                <h3>Windows Failed Login Investigation</h3>
+    <p>
+        Explore my hands-on cybersecurity labs,
+        security investigations and technical projects.
+    </p>
 
-                <p>
-                    A practical SOC lab investigating Windows failed
-                    login events using Wazuh and Windows Security Logs.
-                </p>
+    <div id="project-list">
+        <p>Loading my GitHub projects...</p>
+    </div>
+</section>
 
-                <p>
-                    Project documentation and investigation evidence
-                    will be linked here.
-                </p>
-            </div>
-        </section>
 
         <section id="contact">
             <h2>Contact & Professional Links</h2>
@@ -209,5 +232,72 @@
         <p>© 2026 InkMind | Cybersecurity Portfolio</p>
     </footer>
 
+    
+<script>
+async function loadGitHubProjects() {
+    const projectList = document.getElementById("project-list");
+
+    try {
+        const response = await fetch(
+            "https://api.github.com/users/InkMind/repos?type=owner&sort=updated&per_page=100"
+        );
+
+        if (!response.ok) {
+            throw new Error("GitHub API request failed");
+        }
+
+        const repositories = await response.json();
+
+        const projects = repositories.filter(repo =>
+            !repo.private &&
+            (repo.topics || []).includes("inkmind-portfolio")
+        );
+
+        projectList.replaceChildren();
+
+        if (projects.length === 0) {
+            projectList.textContent =
+                "No portfolio projects found yet. Add the inkmind-portfolio topic to a public repository.";
+            return;
+        }
+
+        const grid = document.createElement("div");
+        grid.className = "project-grid";
+
+        projects.forEach(repo => {
+            const card = document.createElement("div");
+            card.className = "project";
+
+            const title = document.createElement("h3");
+            title.textContent = repo.name;
+
+            const description = document.createElement("p");
+            description.textContent =
+                repo.description || "Cybersecurity hands-on project.";
+
+            const link = document.createElement("a");
+            link.href = repo.html_url;
+            link.textContent = "View Project on GitHub";
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+
+            card.append(title, description, link);
+            grid.appendChild(card);
+        });
+
+        projectList.appendChild(grid);
+
+    } catch (error) {
+        projectList.textContent =
+            "Unable to load projects right now. Please visit my GitHub profile.";
+        console.error(error);
+    }
+}
+
+loadGitHubProjects();
+</script>
+</body>
+
+    
 </body>
 </html>
