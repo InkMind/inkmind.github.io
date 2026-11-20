@@ -180,12 +180,50 @@
 }
 
 
-        footer {
-            padding: 25px 8%;
-            text-align: center;
-            color: #94a3b8;
-            border-top: 1px solid #263247;
-        }
+      footer {
+    padding: 40px 8% 20px;
+    text-align: center;
+    color: #94a3b8;
+    border-top: 1px solid #263247;
+    background-color: #0b1220;
+}
+
+.footer-content h3 {
+    color: #00d4ff;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.footer-content > p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 20px 0;
+}
+
+.footer-links a {
+    color: #00d4ff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+.footer-content .copyright {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 25px;
+    margin-bottom: 0;
+}
 
         @media (max-width: 650px) {
             header {
@@ -459,9 +497,33 @@
         </section>
     </main>
 
-    <footer>
-        <p>© 2026 InkMind | Cybersecurity Portfolio</p>
-    </footer>
-    
+   <footer>
+    <div class="footer-content">
+
+        <h3>InkMind</h3>
+
+        <p>
+            Aspiring Tier 1 SOC Analyst | Security Monitoring |
+            Threat Detection | Incident Response
+        </p>
+
+        <div class="footer-links">
+            <a href="https://github.com/InkMind"
+               target="_blank"
+               rel="noopener noreferrer">GitHub</a>
+
+            <a href="https://linkedin.com/in/charles-oraevar-boniface"
+               target="_blank"
+               rel="noopener noreferrer">LinkedIn</a>
+
+            <a href="mailto:inkmind.socanalyst@gmail.com">Email</a>
+        </div>
+
+        <p class="copyright">
+            © 2026 InkMind. All rights reserved.
+        </p>
+
+    </div>
+</footer>
 </body>
 </html>
