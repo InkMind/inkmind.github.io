@@ -295,6 +295,79 @@
 .certification-card li {
     margin-bottom: 6px;
 }
+        /* Contact Section */
+.contact-intro {
+    max-width: 700px;
+    margin: 0 auto 35px;
+    text-align: center;
+    color: #94a3b8;
+    line-height: 1.8;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 35px;
+}
+
+.contact-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px 20px;
+    background-color: #111c2e;
+    border: 1px solid #263247;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-6px);
+    border-color: #00d4ff;
+}
+
+.contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 18px;
+    border-radius: 50%;
+    background-color: #1e334a;
+    color: #00d4ff;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.contact-card h3 {
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.contact-card p {
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.contact-card span {
+    color: #00d4ff;
+    font-size: 13px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+/* Contact cards on smaller screens */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
     </style>
 </head>
@@ -474,27 +547,52 @@
     </div>
 </section>
 
-        <section id="contact">
-            <h2>Contact & Professional Links</h2>
- <p>
-        Email:
-        <a href="mailto:inkmind.socanalyst@gmail.com">
-            inkmind.socanalyst@gmail.com
-        </a>
+<section id="contact">
+    <h2>Contact & Professional Links</h2>
+
+    <p class="contact-intro">
+        Interested in cybersecurity, collaboration or professional opportunities?
+        Feel free to connect with me through any of the platforms below.
     </p>
-             <p>
-        LinkedIn:
-        <a href="https://linkedin.com/in/charles-oraevar-boniface" target="_blank" rel="noopener noreferrer">
-            linkedin.com/in/charles-oraevar-boniface
+
+    <div class="contact-grid">
+
+        <a href="mailto:inkmind.socanalyst@gmail.com"
+           class="contact-card">
+
+            <div class="contact-icon">✉</div>
+            <h3>Email</h3>
+            <p>Get in touch with me directly.</p>
+            <span>inkmind.socanalyst@gmail.com</span>
+
         </a>
-    </p>
-            <p>
-                GitHub:
-                <a href="https://github.com/InkMind">
-                    github.com/InkMind
-                </a>
-            </p>
-        </section>
+
+        <a href="https://linkedin.com/in/charles-oraevar-boniface"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="contact-card">
+
+            <div class="contact-icon">in</div>
+            <h3>LinkedIn</h3>
+            <p>Connect with me professionally.</p>
+            <span>View LinkedIn Profile →</span>
+
+        </a>
+
+        <a href="https://github.com/InkMind"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="contact-card">
+
+            <div class="contact-icon">⌘</div>
+            <h3>GitHub</h3>
+            <p>Explore my practical cybersecurity projects.</p>
+            <span>View GitHub Profile →</span>
+
+        </a>
+
+    </div>
+</section>
     </main>
 
    <footer>
